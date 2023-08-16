@@ -12,7 +12,8 @@ const UserCard = () => {
   const [loading, setloading] = useState(false);
 
   // submit handel
-  const handelSubmit = async () => {
+  const handelSubmit = async (e) => {
+    e.preventDefault()
     if (userName) {
       setloading(true);
       const res = await axios.get(`https://api.github.com/users/${userName}`);
@@ -37,7 +38,9 @@ const UserCard = () => {
   return (
     <div>
       <div className=" flex justify-center gap-16 flex-col items-center p-20 ">
+      <form onSubmit={(e)=>handelSubmit(e)} >
         <div className="flex justify-between">
+
           <input
             placeholder="username"
             className="px-5 py-2 rounded-md focus:outline-none border-2  border-solid border-violet-900 "
@@ -49,12 +52,14 @@ const UserCard = () => {
           />
 
           <button
-            onClick={handelSubmit}
+
+            type="submit"
             className="bg-[#3c306c] hover:bg-[#2f284d] mx-5 text-white font-medium px-5 py-2 rounded-lg"
           >
             Submit
           </button>
-        </div>
+
+        </div></form>
         {/* loader */}
         {loading && <Loader />}
 
