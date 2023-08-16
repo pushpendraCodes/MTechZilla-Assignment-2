@@ -37,13 +37,13 @@ const UserCard = () => {
 
   return (
     <div>
-      <div className=" flex justify-center gap-16 flex-col items-center p-20 ">
+      <div className=" flex justify-center gap-16 flex-col items-center py-20 px-12 ">
       <form onSubmit={(e)=>handelSubmit(e)} >
-        <div className="flex justify-between">
+        <div className="flex justify-center">
 
           <input
             placeholder="username"
-            className="px-5 py-2 rounded-md focus:outline-none border-2  border-solid border-violet-900 "
+            className="px-3 py-2 rounded-md focus:outline-none border-2  border-solid border-violet-900 "
             type="text"
             name="username"
             onChange={(e) => {
