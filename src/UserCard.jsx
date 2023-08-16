@@ -13,11 +13,15 @@ const UserCard = () => {
 
   // submit handel
   const handelSubmit = async () => {
-    setloading(true);
-    const res = await axios.get(`https://api.github.com/users/${userName}`);
-    setuser(res.data);
-    console.log(res);
-    setloading(false);
+    if (userName) {
+      setloading(true);
+      const res = await axios.get(`https://api.github.com/users/${userName}`);
+      setuser(res.data);
+      console.log(res);
+      setloading(false);
+    } else {
+      alert("username is required");
+    }
   };
 
   // date formate
@@ -26,8 +30,7 @@ const UserCard = () => {
     const originalDate = new Date(originalDateString).toLocaleDateString(
       "fr-CA"
     );
-
- console.log(originalDate);
+    // console.log(originalDate);
     return originalDate;
   };
 
@@ -44,6 +47,7 @@ const UserCard = () => {
               setuserName(e.target.value);
             }}
           />
+
           <button
             onClick={handelSubmit}
             className="bg-[#3c306c] hover:bg-[#2f284d] mx-5 text-white font-medium px-5 py-2 rounded-lg"
